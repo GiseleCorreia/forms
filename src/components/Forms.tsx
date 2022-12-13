@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import {  Col, Form, Container } from 'react-bootstrap';
-import { Box, Title, Button } from './styles';
+import {  Col, Form } from 'react-bootstrap';
+import { Container, Title, Button, Area } from './styles';
 
 
 export default function Forms() {
@@ -16,41 +16,47 @@ export default function Forms() {
   };
 
   return (
-    <Box className="container mt-5">
+    <Container >
         <Title>Formulário</Title>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
-           <Form as={Col} md="4" controlId="validationCustom01">
-                <Form.Label className='label'>Informações</Form.Label>
-                    <Form.Control
+           <Form as={Col} md="12" controlId="validationCustom01">
+              <Area>
+              <Form.Label className='label' >Dados do Profissioinal:</Form.Label>
+                    <Form.Control className='input'
                         required
                         type="text"
-                        placeholder="Dados profissionais"
+                        placeholder="Dados pessoais"
                         as="textarea" rows={6} 
                     />
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                    <Form.Control.Feedback>Preenchido!</Form.Control.Feedback>
+              </Area>
+               
             </Form>
-            <Form as={Col} md="4" controlId="validationCustom02">
-                <Form.Label className='label'>Apontamentos</Form.Label>
-                    <Form.Control
+            <Form as={Col} md="12" controlId="validationCustom02">
+              <Area>
+              <Form.Label className='label'>Informações:</Form.Label>
+                    <Form.Control className='input'
                     required
                     type="text"
                     placeholder="Apontamentos"
                     as="textarea" rows={3}
                     />
-                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                <Form.Control.Feedback>Preenchido!</Form.Control.Feedback>
+              </Area>
+                
             </Form>
             
-            <Form className="mb-3">
+            {/* <Form className="mb-3">
                 <Form.Check
                 required
-                label="Todos os campos estão preenchidos?"
-                feedback="You must agree before submitting."
+                label="Todos os campos estão preenchidos."
+                feedback="Verifique se os campos estão preechidos"
                 feedbackType="invalid"
                 />
-            </Form>
+            </Form> */}
             <Button type="submit">Enviar</Button>
         </Form>
-    </Box>
+    </Container>
     
   );
 }
