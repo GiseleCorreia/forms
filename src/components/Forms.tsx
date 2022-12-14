@@ -5,6 +5,8 @@ import { Container, Title, Button, Area } from './styles';
 
 export default function Forms() {
   const [validated, setValidated] = useState(false);
+  const [name, setName] = useState('');
+  const [apontamentos, setAponamentos] = useState('')
 
   const handleSubmit = (event: any) => {
     const form = event.currentTarget;
@@ -15,14 +17,27 @@ export default function Forms() {
     setValidated(true);
   };
 
+  const handleInputDados = (event: React.ChangeEvent<HTMLInputElement>) => {
+    
+    setName(event.target.value)
+    
+  }
+
+  const handleInputApontamentos = (event: React.ChangeEvent<HTMLInputElement>) => {
+    
+    setAponamentos(event.target.value)
+  }
+
+
   return (
     <Container >
         <Title>Formulário</Title>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
            <Form as={Col} md="12" controlId="validationCustom01">
               <Area>
-              <Form.Label className='label' >Dados do Profissioinal:</Form.Label>
-                    <Form.Control className='input'
+              <Form.Label className='label' >Dados do Profissional:</Form.Label>
+                    <Form.Control className='input' 
+                        value={name} onChange={handleInputDados}
                         required
                         type="text"
                         placeholder="Dados pessoais"
@@ -36,6 +51,7 @@ export default function Forms() {
               <Area>
               <Form.Label className='label'>Informações:</Form.Label>
                     <Form.Control className='input'
+                    value={apontamentos} onChange={handleInputApontamentos}
                     required
                     type="text"
                     placeholder="Apontamentos"
@@ -45,6 +61,10 @@ export default function Forms() {
               </Area>
                 
             </Form>
+            <div>
+              retorno: [{name}, {apontamentos}]
+            </div>
+            <hr/>
             
             {/* <Form className="mb-3">
                 <Form.Check
@@ -54,7 +74,7 @@ export default function Forms() {
                 feedbackType="invalid"
                 />
             </Form> */}
-            <Button type="submit">Enviar</Button>
+            <Button type="submit" >Enviar</Button>
         </Form>
     </Container>
     
