@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {  Col, Form } from 'react-bootstrap';
-import { Container, Title, Button, Area } from './styles';
+import { Container, Title, Button, Item, Area } from './styles';
 
 
 export default function Forms() {
   const [validated, setValidated] = useState(false);
-  const [name, setName] = useState('');
-  const [apontamentos, setAponamentos] = useState('')
 
   const handleSubmit = (event: any) => {
     const form = event.currentTarget;
@@ -31,23 +29,22 @@ export default function Forms() {
 
   return (
     <Container >
-        <Title>Formulário</Title>
+        <Title>Formulário RDO</Title>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
            <Form as={Col} md="12" controlId="validationCustom01">
               <Area>
-              <Form.Label className='label' >Dados do Profissional:</Form.Label>
-                    <Form.Control className='input' 
-                        value={name} onChange={handleInputDados}
+              <Form.Label className='label' >Dados do Profissioinal:</Form.Label>
+                    <Form.Control className='input'
                         required
                         type="text"
                         placeholder="Dados pessoais"
-                        as="textarea" rows={6} 
+                        as="textarea" rows={9} 
                     />
                     <Form.Control.Feedback>Preenchido!</Form.Control.Feedback>
-              </Area>
+              </Item>
                
             </Form>
-            <Form as={Col} md="12" controlId="validationCustom02">
+            <Form as={Col}  controlId="validationCustom02">
               <Area>
               <Form.Label className='label'>Informações:</Form.Label>
                     <Form.Control className='input'
@@ -59,7 +56,7 @@ export default function Forms() {
                     />
                 <Form.Control.Feedback>Preenchido!</Form.Control.Feedback>
               </Area>
-                
+              <Button type="submit">Enviar</Button>
             </Form>
             <div>
               retorno: [{name}, {apontamentos}]
@@ -74,8 +71,10 @@ export default function Forms() {
                 feedbackType="invalid"
                 />
             </Form> */}
-            <Button type="submit" >Enviar</Button>
+            <Button type="submit">Enviar</Button>
         </Form>
+        
+        
     </Container>
     
   );
